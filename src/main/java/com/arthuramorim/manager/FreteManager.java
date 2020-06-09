@@ -21,11 +21,14 @@ public class FreteManager {
         Double peso;
         Boolean auditado;
         String opcAuditada;
+        Integer id;
 
         System.out.println("Mercadoria: ");
         sc = new Scanner(System.in);
         System.out.println("\nTipo: ");
         tipo = sc.next();
+        System.out.println("\nID: ");
+        id = sc.nextInt();
         System.out.println("\nDescricao: ");
         descricao = sc.next();
         System.out.println("\nPeso em Kilos: ");
@@ -44,7 +47,7 @@ public class FreteManager {
 
         }else{
             auditado = false;
-            mercadoria = new Mercadoria(descricao,tipo,peso,nfs,auditado);
+            mercadoria = new Mercadoria(id,descricao,tipo,peso,nfs,auditado);
 
         }
 
@@ -119,14 +122,47 @@ public class FreteManager {
         opcTipo = sc.nextInt();
 
 
-        if(opcTipo == 1)
+        if(opcTipo == 1){
         System.out.println("\nDigite o nome codigo do frete que deseja vincular uma mercadoria:");
 
         Integer id;
         id = sc.nextInt();
+        for(FreteRegular frete : main.getRegular()){
+            if(id == frete.getId()){
+                System.out.println("\nDigite o id da mercadoria que deseja vicular ao frete: ");
+                int idMercadoria = sc.nextInt();
+                for(Mercadoria mercadoria : main.getMercadorias()){
+                    if(idMercadoria == mercadoria.getId()){
+                        frete.setMercadoria(mercadoria);
+                        break;
+                    }
+                }
 
-        main.get
+            }
+        }
 
+    }else{
+            if(opcTipo == 2){
+                System.out.println("\nDigite o nome codigo do frete que deseja vincular uma mercadoria:");
+
+                Integer id;
+                id = sc.nextInt();
+                for(FreteDemanda frete : main.getDemanda()){
+                    if(id == frete.getId()){
+                        System.out.println("\nDigite o id da mercadoria que deseja vicular ao frete: ");
+                        int idMercadoria = sc.nextInt();
+                        for(Mercadoria mercadoria : main.getMercadorias()){
+                            if(idMercadoria == mercadoria.getId()){
+                                frete.setMercadoria(mercadoria);
+                                break;
+                            }
+                        }
+
+                    }
+                }
+
+            }
+        }
     }
 
 

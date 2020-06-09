@@ -9,9 +9,11 @@ public class Mercadoria {
     private Boolean auditado;
     private String orgaoInspetor;
     private String dataInspecao;
+    private Integer id;
 
 
-    public Mercadoria(String descricao, String tipo, Double peso, String nfs, Boolean auditado) {
+    public Mercadoria(Integer id,String descricao, String tipo, Double peso, String nfs, Boolean auditado) {
+        this.id = id;
         this.descricao = descricao;
         this.tipo = tipo;
         this.peso = peso;
@@ -26,8 +28,13 @@ public class Mercadoria {
         this.peso = peso;
         this.nfs = nfs;
         this.auditado = auditado;
-        this.orgaoInspetor = orgaoInspetor;
-        this.dataInspecao = dataInspecao;
+        if(auditado){
+            this.orgaoInspetor = orgaoInspetor;
+            this.dataInspecao = dataInspecao;
+        }else{
+            this.dataInspecao = null;
+            this.orgaoInspetor = null;
+        }
     }
 
 
@@ -85,6 +92,14 @@ public class Mercadoria {
 
     public void setDataInspecao(String dataInspecao) {
         this.dataInspecao = dataInspecao;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @Override
