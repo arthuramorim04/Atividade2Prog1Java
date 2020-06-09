@@ -117,7 +117,7 @@ public class FreteManager {
     public void cadastrarMercadoria(){
         sc = new Scanner(System.in);
 
-        System.out.println("\nQual tipo de fretamento deseja vincular uma mercadoria\n1. Reguar \n2.Demanda\n");
+        System.out.println("\nQual tipo de fretamento deseja vincular uma mercadoria\n1. Regular \n2.Demanda\n");
         int opcTipo = 0;
         opcTipo = sc.nextInt();
 
