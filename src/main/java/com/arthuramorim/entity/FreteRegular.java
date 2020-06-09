@@ -50,7 +50,6 @@ public class FreteRegular extends Frete implements InterfaceFrete {
     }
 
     public String toString() {
-        if(getMercadoria().getAuditado()){
             return  "\nFretamento Demanda: \n" +
                     "\nFrequencia: " + this.getFrequenciaOperacoes() + " " + this.getUnidadeFrequencia() +
                     "\nQuantidade:" + this.getQuantidadeOperacoes() +
@@ -60,19 +59,7 @@ public class FreteRegular extends Frete implements InterfaceFrete {
                     "\nCidade Destino: " + this.getCidadeDestino()+
                     "\nDistancia: " + this.getDistancia() +
                     "\nValor: " + this.getValor() ;
-        }else{
 
-            return  "\nFretamento Demanda: \n" +
-                    "\nFrequencia: " + this.getFrequenciaOperacoes() + this.getUnidadeFrequencia() +
-                    "\nQuantidade:" + this.getQuantidadeOperacoes() +
-                    "\nTipo: " + this.getTipoFrete() +
-                    this.getMercadoria().toString()+
-                    "\nCidade Origem: " + this.getCidadeOrigem()+
-                    "\nCidade Destino: " + this.getCidadeDestino()+
-                    "\nDistancia: " + this.getDistancia() +
-                    "\nValor: " + this.getValor() ;
-
-        }
 
     }
 }

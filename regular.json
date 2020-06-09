@@ -1,0 +1,24 @@
+[
+  {
+    "unidadeFrequencia": "d",
+    "quantidadeOperacoes": 12,
+    "frequenciaOperacoes": 7,
+    "tipoFrete": "Regular",
+    "cidadeOrigem": "florianopolis",
+    "cidadeDestino": "palhoca",
+    "distancia": 32.4,
+    "id": 1,
+    "valor": 216.2
+  },
+  {
+    "unidadeFrequencia": "d",
+    "quantidadeOperacoes": 30,
+    "frequenciaOperacoes": 15,
+    "tipoFrete": "Regular",
+    "cidadeOrigem": "florianopolis",
+    "cidadeDestino": "palhoca",
+    "distancia": 34.6,
+    "id": 2,
+    "valor": 217.3
+  }
+]

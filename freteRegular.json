@@ -1,0 +1,32 @@
+[
+  {
+    "unidadeFrequencia": "d",
+    "quantidadeOperacoes": 12,
+    "frequenciaOperacoes": 32,
+    "tipoFrete": "Regular",
+    "cidadeOrigem": "dasdsa",
+    "cidadeDestino": "dsadsa",
+    "distancia": 3213.3,
+    "mercadoria": {
+      "descricao": "macas",
+      "tipo": "Frutas",
+      "peso": 456.3,
+      "nfs": "1746351232",
+      "auditado": false,
+      "id": 1
+    },
+    "id": 6,
+    "valor": 1806.65
+  },
+  {
+    "unidadeFrequencia": "d",
+    "quantidadeOperacoes": 1,
+    "frequenciaOperacoes": 20,
+    "tipoFrete": "Regular",
+    "cidadeOrigem": "florianopolis",
+    "cidadeDestino": "joinvile",
+    "distancia": 56.7,
+    "id": 8,
+    "valor": 228.35
+  }
+]

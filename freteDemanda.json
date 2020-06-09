@@ -1,0 +1,32 @@
+[
+  {
+    "dataPostagem": "12/32/12",
+    "previsaoEntrega": "15/32/12",
+    "tipoFrete": "Demanda",
+    "cidadeOrigem": "biguacu",
+    "cidadeDestino": "criciuma",
+    "distancia": 43.23,
+    "mercadoria": {
+      "descricao": "Diesel",
+      "tipo": "combustivel",
+      "peso": 1234.7,
+      "nfs": "8756453",
+      "auditado": true,
+      "orgaoInspetor": "Petrobras",
+      "dataInspecao": "32/12/2019",
+      "id": 2
+    },
+    "id": 3,
+    "valor": 325.938
+  },
+  {
+    "dataPostagem": "12/12/2019",
+    "previsaoEntrega": "05/03/2020",
+    "tipoFrete": "Demanda",
+    "cidadeOrigem": "manaus",
+    "cidadeDestino": "florianopolis",
+    "distancia": 1234.6,
+    "id": 4,
+    "valor": 1040.7599999999998
+  }
+]

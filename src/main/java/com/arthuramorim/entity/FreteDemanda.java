@@ -6,7 +6,6 @@ public class FreteDemanda extends Frete implements InterfaceFrete {
 
     private String dataPostagem;
     private String previsaoEntrega;
-    private Double valor;
 
 
     public FreteDemanda(String tipoFrete, String cidadeOrigem, String cidadeDestino, Double distancia, String dataPostagem,String previsaoEntrega,Integer id) {
@@ -36,18 +35,9 @@ public class FreteDemanda extends Frete implements InterfaceFrete {
         this.previsaoEntrega = previsaoEntrega;
     }
 
-    @Override
-    public Double getValor() {
-        return valor;
-    }
-
-    @Override
-    public void setValor(Double valor) {
-        this.valor = valor;
-    }
 
     public String toString() {
-        if(getMercadoria().getAuditado()){
+
             return  "\nFretamento Demanda: \n" +
                     "\nData Postagem: " + this.getDataPostagem() +
                     "\nPrevisao Entrega:" + this.getPrevisaoEntrega() +
@@ -57,19 +47,7 @@ public class FreteDemanda extends Frete implements InterfaceFrete {
                     "\nCidade Destino: " + this.getCidadeDestino()+
                     "\nDistancia: " + this.getDistancia() +
                     "\nValor: " + this.getValor() ;
-        }else{
 
-            return  "\nFretamento Demanda: \n" +
-                    "\nData Postagem: " + this.getDataPostagem() +
-                    "\nPrevisao Entrega:" + this.getPrevisaoEntrega() +
-                    "\nTipo: " + this.getTipoFrete() +
-                    this.getMercadoria().toString()+
-                    "\nCidade Origem: " + this.getCidadeOrigem()+
-                    "\nCidade Destino: " + this.getCidadeDestino()+
-                    "\nDistancia: " + this.getDistancia() +
-                    "\nValor: " + this.getValor() ;
-
-        }
 
     }
 }

@@ -1,23 +1,23 @@
 package com.arthuramorim.manager;
 
+import com.arthuramorim.JsonController;
 import com.arthuramorim.Main;
 import com.arthuramorim.entity.FreteDemanda;
 import com.arthuramorim.entity.FreteRegular;
 import com.arthuramorim.entity.Mercadoria;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class FreteManager {
 
-    private Scanner sc;
-    private Mercadoria mercadoria;
-    private static Main main;
+    public Scanner sc;
+    public Mercadoria mercadoria;
+    public Main main;
 
 
-
-
-    public void criaMercadoria() {
-        String descricao,tipo,nfs,orgaoInspetor,dataInspecao;
+    public void criaMercadoria(List<Mercadoria> list) {
+        String descricao, tipo, nfs, orgaoInspetor, dataInspecao;
         Double peso;
         Boolean auditado;
         String opcAuditada;
@@ -37,26 +37,26 @@ public class FreteManager {
         nfs = sc.next();
         System.out.println("\nAuditada: S / N");
         opcAuditada = sc.next();
-        if(opcAuditada.equalsIgnoreCase("s")){
+        if (opcAuditada.equalsIgnoreCase("s")) {
             auditado = true;
             System.out.println("\nOrgao Inspetor: ");
             orgaoInspetor = sc.next();
             System.out.println("\nData Inspecao: ");
             dataInspecao = sc.next();
-            mercadoria = new Mercadoria(descricao,tipo,peso,nfs,auditado,orgaoInspetor,dataInspecao);
+            mercadoria = new Mercadoria(id, descricao, tipo, peso, nfs, auditado, orgaoInspetor, dataInspecao);
 
-        }else{
+        } else {
             auditado = false;
-            mercadoria = new Mercadoria(id,descricao,tipo,peso,nfs,auditado);
+            mercadoria = new Mercadoria(id, descricao, tipo, peso, nfs, auditado);
 
         }
 
-        Main.getMain().getMercadorias().add(mercadoria);
+        list.add(mercadoria);
+
 
     }
 
-    public void novoFrete() {
-        System.out.println("\nInforme o tipo de fretamento desejado: ");
+    public void novoFrete(List<FreteRegular> listRegular, List<FreteDemanda> listDemanda) {
 
         String tipoFrete;
         String cidadeOrigem;
@@ -80,12 +80,12 @@ public class FreteManager {
         System.out.println("\nDistancia: ");
         distancia = sc.nextDouble();
 
-        while (opcFrete < 1 || opcFrete > 2){
+        while (opcFrete < 1 || opcFrete > 2) {
             System.out.println("Escolha o tipo de frete: \n 1. Regular\n 2. Demanda\n");
             opcFrete = sc.nextInt();
         }
 
-        if(opcFrete == 1){
+        if (opcFrete == 1) {
             System.out.println("\nQuantidade de Operacoes: S / N");
             quantidadeOperacoes = sc.nextInt();
             System.out.println("\nFrequencia de Operacoes: S / N");
@@ -94,77 +94,79 @@ public class FreteManager {
             unidadeFrequencia = sc.next();
             tipoFrete = "Regular";
 
-            FreteRegular freteRegular = new FreteRegular(tipoFrete,cidadeOrigem,cidadeDestino,distancia,unidadeFrequencia,quantidadeOperacoes,frequenciaOperacoes,id);
-            Main.getMain().getRegular().add(freteRegular);
+            FreteRegular freteRegular = new FreteRegular(tipoFrete, cidadeOrigem, cidadeDestino, distancia, unidadeFrequencia, quantidadeOperacoes, frequenciaOperacoes, id);
+            listRegular.add(freteRegular);
         }
-        if (opcFrete == 2){
+        if (opcFrete == 2) {
 
             System.out.println("\nData Postagem: ");
             dataPostagem = sc.next();
             System.out.println("\nPrevisao Entrega: ");
             previsaoEntrega = sc.next();
             tipoFrete = "Demanda";
-            FreteDemanda freteDemanda = new FreteDemanda(tipoFrete,cidadeOrigem,cidadeDestino,distancia,dataPostagem,previsaoEntrega,id);
-            Main.getMain().getDemanda().add(freteDemanda);
+            FreteDemanda freteDemanda = new FreteDemanda(tipoFrete, cidadeOrigem, cidadeDestino, distancia, dataPostagem, previsaoEntrega, id);
+            listDemanda.add(freteDemanda);
         }
-
-
 
 
     }
 
 
-    public void cadastrarMercadoria(){
+    public void cadastrarMercadoria(List<FreteDemanda> listDemanda, List<FreteRegular> listRegular, List<Mercadoria> listMercadoria) {
         sc = new Scanner(System.in);
 
         System.out.println("\nQual tipo de fretamento deseja vincular uma mercadoria\n1. Regular \n2.Demanda\n");
         int opcTipo = 0;
         opcTipo = sc.nextInt();
 
+        switch (opcTipo){
+            case 1:{
 
-        if(opcTipo == 1){
-        System.out.println("\nDigite o nome codigo do frete que deseja vincular uma mercadoria:");
-
-        Integer id;
-        id = sc.nextInt();
-        for(FreteRegular frete : main.getRegular()){
-            if(id == frete.getId()){
-                System.out.println("\nDigite o id da mercadoria que deseja vicular ao frete: ");
-                int idMercadoria = sc.nextInt();
-                for(Mercadoria mercadoria : main.getMercadorias()){
-                    if(idMercadoria == mercadoria.getId()){
-                        frete.setMercadoria(mercadoria);
-                        break;
-                    }
-                }
-
-            }
-        }
-
-    }else{
-            if(opcTipo == 2){
-                System.out.println("\nDigite o nome codigo do frete que deseja vincular uma mercadoria:");
-
-                Integer id;
-                id = sc.nextInt();
-                for(FreteDemanda frete : main.getDemanda()){
-                    if(id == frete.getId()){
-                        System.out.println("\nDigite o id da mercadoria que deseja vicular ao frete: ");
+                System.out.println("\nDigite o id do frete: ");
+                int idFrete  = sc.nextInt();
+                for(FreteRegular frete : listRegular){
+                    if(frete.getId() == idFrete){
+                        System.out.println("\n\n");
+                        System.out.println("Digite o codigo da mercadoria que deseja vincular: ");
                         int idMercadoria = sc.nextInt();
-                        for(Mercadoria mercadoria : main.getMercadorias()){
-                            if(idMercadoria == mercadoria.getId()){
-                                frete.setMercadoria(mercadoria);
+                        for(Mercadoria merc : listMercadoria){
+                            if(merc.getId() == idMercadoria){
+                                frete.setMercadoria(merc);
                                 break;
                             }
                         }
-
                     }
                 }
+                break;
 
             }
+            case 2:{
+                System.out.println("\nDigite o id do frete: ");
+                int idFrete  = sc.nextInt();
+                for(FreteDemanda frete : listDemanda){
+                    if(frete.getId() == idFrete){
+                        System.out.println("\n\n");
+                        System.out.println("Digite o codigo da mercadoria que deseja vincular: ");
+                        int idMercadoria = sc.nextInt();
+                        for(Mercadoria merc : listMercadoria){
+                            if(merc.getId() == idMercadoria){
+                                frete.setMercadoria(merc);
+                                break;
+                            }
+                        }
+                    }
+                }
+                break;
+            }
+            default:
+                System.out.println("\nOpcao invalida");
+                break;
         }
-    }
 
+
+
+
+    }
 
 
 }

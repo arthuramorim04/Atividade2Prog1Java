@@ -22,7 +22,8 @@ public class Mercadoria {
     }
 
 
-    public Mercadoria(String descricao, String tipo, Double peso, String nfs, Boolean auditado, String orgaoInspetor, String dataInspecao) {
+    public Mercadoria(Integer id,String descricao, String tipo, Double peso, String nfs, Boolean auditado, String orgaoInspetor, String dataInspecao) {
+        this.id = id;
         this.descricao = descricao;
         this.tipo = tipo;
         this.peso = peso;

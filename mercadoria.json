@@ -1,0 +1,20 @@
+[
+  {
+    "descricao": "macas",
+    "tipo": "Frutas",
+    "peso": 456.3,
+    "nfs": "1746351232",
+    "auditado": false,
+    "id": 1
+  },
+  {
+    "descricao": "Diesel",
+    "tipo": "combustivel",
+    "peso": 1234.7,
+    "nfs": "8756453",
+    "auditado": true,
+    "orgaoInspetor": "Petrobras",
+    "dataInspecao": "32/12/2019",
+    "id": 2
+  }
+]
